@@ -3,7 +3,7 @@ public class Supplier {
 	private String supplierName;
 	private String supplierAddress;
 	private String supplierContact;
-	private Product productSupply;
+	private Product productSupply; //get from kennard
 	private static int supplierCount = 1;
 
     public Supplier(String supplierName, String supplierAddress, String supplierContact, Product productSupply) {
