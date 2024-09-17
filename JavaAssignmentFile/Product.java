@@ -8,7 +8,7 @@ public class Product {
 	private int productQty;
 	private String productDescription;
 	private double productPrice;
-	private static int productCount = 1;
+	public static int productCount = 1;
 	//-------------------------------------------------------------
 	
 	//constructors
@@ -77,5 +77,12 @@ public class Product {
     }
     //-------------------------------------------------------------
     
-    
+    //Product to string
+    public void toStringProd() {
+	    System.out.printf("Product ID: PROD%04d\n", productID);
+	    System.out.println("Product Name: " + productName);
+	    System.out.println("Product Quantity: " + productQty);
+	    System.out.println("Product Description: " + productDescription);
+	    System.out.printf("Product Price: %.2f\n", productPrice);
+	}
 }
