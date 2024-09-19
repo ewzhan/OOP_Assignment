@@ -6,8 +6,9 @@ public class StockControl extends Product {
 	private int quantity;
 	private int stockLeft;
 	private String moveType;
+	private String reference;
 	private String date;
-	private static int scCount = 1;
+	public static int scCount = 1;
 	public Product product;
 	//-------------------------------------------------------------
 	
@@ -17,15 +18,17 @@ public class StockControl extends Product {
     	quantity = 0;
     	stockLeft = 0;
     	moveType = "";
+    	reference = "";
     	date = "";
     	scCount++;
     }
     
-    public StockControl(int quantity, String moveType, String date, String productName, int productQty, String productDescription, double productPrice){
-    	super(productName, productQty, productDescription, productPrice);
-    	stockID = scCount;
+    public StockControl(int quantity, int stockLeft, String moveType, String reference, String date, Product product){
+    	this.product = product;
+    	this.stockID = scCount;
     	this.quantity = quantity;
-    	stockLeft = getProductQty();  //run add/minus productQty first before constructing
+    	this.stockLeft = stockLeft;  //run add/minus productQty first before constructing
+    	this.reference = reference;
     	this.moveType = moveType;
     	this.date = date;
     	scCount++;	
@@ -51,7 +54,7 @@ public class StockControl extends Product {
     //-------------------------------------------------------------
     
     public void setMoveType(String moveType){
-    	if (this.moveType.equals("Add")){		//if add, minus twice
+    	if (this.moveType.equals("Add Stock")){		//if add, minus twice
     		minusProductQty(quantity * 2);
     		this.moveType = moveType;
     	}
@@ -66,6 +69,16 @@ public class StockControl extends Product {
     }
     //-------------------------------------------------------------
     
+    public void setRef(String reference){
+    	this.reference = reference;
+    }
+    
+    public String getRef(){
+    	return reference;
+    }
+    
+    //-------------------------------------------------------------
+    
     public void setDate(String date){
     	this.date = date;
     }
@@ -75,5 +88,15 @@ public class StockControl extends Product {
     }
     //-------------------------------------------------------------
     
-    
+    //Stock Control to string
+	public void toStringInvCtrl() {
+	    System.out.println("Stock ID: " + stockID);
+		System.out.println("Product Name: " + product.getProductName());
+	    System.out.println("Quantity Transfered: " + quantity);
+	    System.out.println("Remaining Stock after Movement: " + stockLeft);
+	    System.out.println("Move Type: " + moveType);
+	    System.out.println("Reference: " + reference);
+		System.out.println("Date Transferred: " + date);
+
+	}
 }

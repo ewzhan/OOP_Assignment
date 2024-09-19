@@ -68,12 +68,14 @@ public class Product {
     //-------------------------------------------------------------
     
     //add/minus productQty
-    public void addProductQty(int add){
+    public int addProductQty(int add){
     	productQty += add;
+		return productQty;
     }
     
-    public void minusProductQty(int minus){
+    public int minusProductQty(int minus){
     	productQty -= minus;
+		return productQty;
     }
     //-------------------------------------------------------------
     
