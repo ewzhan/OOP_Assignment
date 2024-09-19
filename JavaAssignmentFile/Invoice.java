@@ -1,24 +1,36 @@
+import java.text.DecimalFormat;
+import java.util.Date;
 
 public class Invoice extends Order {
-private int invoiceID;
+private String invoiceID;
+private static int invoiceCounter = 1;
+
+    //Default Constructor
     public Invoice() {
-    	this("",null,null,"",0);
+    	this(new Date(),"Pending");  //State status as pending before payment
     }
     
-     public Invoice(String orderID,OrderDetail orderDetail,Date orderDate,String status,int invoiceID) {
-    	super(orderID,orderDetail,orderDate,status);
-    	this.invoiceID = invoiceID;
+    //Parameterized constructor
+     public Invoice(Date orderDate,String status) {
+    	super(orderDate,status);
+    	this.invoiceID = generateInvoiceID();
     }
-    
-    public void setInvoiceID(int invoiceID){
-    	this.invoiceID = invoiceID;
+
+    //Generate a unique Invoice ID
+    private String generateInvoiceID(){
+    	DecimalFormat formatter = new DecimalFormat("INV0000");
+    	String formattedInvoiceID = formatter.format(invoiceCounter);
+    	invoiceCounter++;
+    	return formattedInvoiceID;    	
     	}
-    
-     public int getInvoiceID() {
+
+    //Getter    
+     public String getInvoiceID() {
         return invoiceID;
     }
-     
+
+    //String return    
     public String toString(){
-    	return "Invoice ID:" + invoiceID;
-    	}
+    	return "\nInvoice ID:" + this.invoiceID + " | Order ID:" +super.getOrderID() ;
+   	}
 }
