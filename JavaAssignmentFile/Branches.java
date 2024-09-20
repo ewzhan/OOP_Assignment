@@ -55,7 +55,16 @@ public class Branches {
     	
     }
     
+    //add Branch
+    //edit Branch
+    //toString
+    //search Branch
+    	
+    //select from the option after display a supplier detail () 
     
+    //select from the option after display a supplier detail (show the order done with this supplier (from order class) 
+    
+    //select from the option after display a supplier detail (display List of the product supply(SupplyList class) by this supplier)
     
     public void receiveStock(Product product, int quantity) {
         stockLevels.put(product, stockLevels.getOrDefault(product, 0) + quantity);
